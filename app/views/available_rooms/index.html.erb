@@ -1,0 +1,23 @@
+<br>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th colpan="5">Hotel</th>
+    <th>City</th>
+    <th>Category</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% rooms.each do |room| %>
+    <tr>
+      <td><%= room.hotel.name %></td>
+      <td><%= room.hotel.city %></td>
+      <td><%= room.category.upcase %></td>
+      <td><%= link_to 'Book', bookings_path(room_id: room, user_id: current_user, from: params[:from], till: params[:till]), method: :post, class: "btn btn-success #{"disabled" unless user_signed_in?}", disabled: !user_signed_in? %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+<% if notice %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+<div class="page-header">
+  <h1>Listing bookings</h1>
+</div>
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Hotel</th>
+      <th>Room</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.room.hotel.name %></td>
+        <td><%= booking.room.category.upcase %></td>
+        <td><%= l(booking.date) %></td>
+        <td><%= link_to 'Cancel booking', booking_path(booking), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

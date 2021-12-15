@@ -1,0 +1,32 @@
+<% provide(:title, 'Home') %>
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Book a room for your favourite pet</h1>
+        <div class="alert alert-dark">
+        <%= form_tag(available_rooms_path, :method => "get", id: "search-form") do %>
+          <div class="row">
+            <div class="col">
+              <%= label_tag :city %>
+              <%= text_field_tag :city, nil, placeholder: 'e.g. Lviv' %>
+            </div>
+            <div class="col">
+              <%= label_tag :from %>
+              <%= date_field_tag :from %>
+            </div>
+            <div class="col">
+              <%= label_tag :till %>
+              <%= date_field_tag :till %>
+            </div>
+            <div class="col">
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
